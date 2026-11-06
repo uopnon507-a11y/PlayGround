@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#101813" />
+  <link rel="icon" href="data:," />
+  <title>Last Light — Battle Royale</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game" aria-label="Battle royale game"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><div><b>LAST LIGHT</b><small>ISLAND SURVIVAL</small></div></div>
+      <div class="match-pill"><span class="live-dot"></span><span id="phase-label">DROP ZONE</span></div>
+      <button id="sound-toggle" class="icon-button" aria-label="Toggle sound">♫</button>
+    </header>
+    <section class="hud">
+      <div class="stat-card alive-card"><span class="stat-icon">♟</span><div><strong id="alive-count">21</strong><small>REMAINING</small></div></div>
+      <div class="stat-card kill-card"><span class="stat-icon">✕</span><div><strong id="kill-count">0</strong><small>ELIMINATIONS</small></div></div>
+      <div class="zone-card"><div class="zone-label"><span class="zone-pulse"></span> SAFE ZONE <b id="zone-timer">01:20</b></div><div class="zone-track"><i id="zone-progress"></i></div></div>
+      <div class="mini-map-wrap"><canvas id="minimap" width="144" height="144"></canvas><span class="map-caption">NORTH ISLAND</span></div>
+    </section>
+    <div class="crosshair" aria-hidden="true"><i></i><b></b></div>
+    <section class="bottom-hud">
+      <div class="player-card">
+        <div class="player-heading"><span>FIELD AGENT</span><b>LV. 01</b></div>
+        <div class="meter-row"><span class="meter-icon health-icon">♥</span><div class="meter"><i id="health-fill"></i></div><strong id="health-text">100</strong></div>
+        <div class="meter-row"><span class="meter-icon shield-icon">⬟</span><div class="meter shield-meter"><i id="shield-fill"></i></div><strong id="shield-text">50</strong></div>
+      </div>
+      <div class="weapon-card"><div class="weapon-top"><span id="weapon-name">RANGER</span><span class="weapon-tag">AUTO</span></div><div class="ammo"><strong id="ammo-current">30</strong><span>/</span><small id="ammo-reserve">120</small><button id="reload-button" title="Reload (R)">↻</button></div><div class="weapon-caption">ASSAULT RIFLE <span>•</span> <kbd>R</kbd> RELOAD</div></div>
+      <div class="feedback" id="feedback"></div>
+    </section>
+    <section class="touch-controls" aria-label="Touch controls">
+      <div class="joystick" id="joystick"><div class="joy-ring"></div><div class="joy-knob" id="joy-knob"></div><span class="joy-label">MOVE</span></div>
+      <div class="action-controls"><button id="heal-button" class="action-btn heal-btn"><span>✚</span><small>HEAL <b id="medkit-count">2</b></small></button><button id="fire-button" class="fire-btn"><span class="fire-core">◎</span><b>FIRE</b><small>HOLD TO SHOOT</small></button></div>
+    </section>
+    <div id="toast" class="toast"></div>
+    <div id="overlay" class="overlay">
+      <div class="menu-card">
+        <div class="eyebrow"><span></span> SOLO • 21 OPERATORS <span></span></div>
+        <h1>LAST<br/><em>LIGHT</em></h1>
+        <p>One island. One safe zone.<br/>Be the last one standing.</p>
+        <div class="drop-info"><span class="drop-icon">⌖</span><div><b>DEPLOYMENT READY</b><small>LAND • LOOT • SURVIVE</small></div><span class="drop-arrow">↗</span></div>
+        <button id="start-button" class="start-button">DEPLOY NOW <span>→</span></button>
+        <div class="control-tip"><b>WASD</b> MOVE <i>•</i> <b>MOUSE</b> AIM & FIRE <i>•</i> <b>R</b> RELOAD</div>
+        <div class="mobile-tip">LEFT STICK TO MOVE <i>•</i> HOLD FIRE TO SHOOT</div>
+      </div>
+    </div>
+    <div id="end-overlay" class="overlay hidden"><div class="menu-card end-card"><div class="eyebrow">MATCH COMPLETE</div><h2 id="end-title">VICTORY</h2><p id="end-copy">The island is yours.</p><div class="end-stats"><div><b id="end-kills">0</b><small>ELIMINATIONS</small></div><div><b id="end-time">00:00</b><small>SURVIVAL TIME</small></div></div><button id="again-button" class="start-button">PLAY AGAIN <span>→</span></button></div></div>
+    <div class="rotate-hint">↻ &nbsp; LANDSCAPE RECOMMENDED</div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
